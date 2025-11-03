@@ -598,20 +598,136 @@ export default function DashboardPage() {
           </>
         ) : (
           <>
-            {/* Student Dashboard - Available Assessments */}
-            <Card className="mb-6 md:mb-8 animate-slide-up">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-                <div className="flex-1">
-                  <h2 className="font-orbitron text-xl font-bold text-gray-900 mb-1">
-                    Available Assessments
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    Take these quizzes to test your entrepreneurship knowledge
-                  </p>
+            {/* Student Dashboard Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
+              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => router.push('/my-courses')}>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-12 -mt-12"></div>
+                <div className="relative flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-blue-100 mb-2">My Programs</p>
+                    <p className="text-3xl md:text-4xl font-bold">3</p>
+                    <p className="text-xs text-blue-100 mt-1">Enrolled</p>
+                  </div>
+                  <BookOpen className="w-10 h-10 text-white opacity-80" />
                 </div>
-                <FileQuestion className="w-6 h-6 text-blue-600 hidden md:block" />
-              </div>
+              </Card>
 
+              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-emerald-500 to-green-600 text-white hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => router.push('/my-assessments')}>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-12 -mt-12"></div>
+                <div className="relative flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-emerald-100 mb-2">Assessments</p>
+                    <p className="text-3xl md:text-4xl font-bold">{quizzes.length}</p>
+                    <p className="text-xs text-emerald-100 mt-1">Available</p>
+                  </div>
+                  <FileQuestion className="w-10 h-10 text-white opacity-80" />
+                </div>
+              </Card>
+
+              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-purple-500 to-purple-600 text-white hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => router.push('/my-results')}>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-12 -mt-12"></div>
+                <div className="relative flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-purple-100 mb-2">My Results</p>
+                    <p className="text-3xl md:text-4xl font-bold">5</p>
+                    <p className="text-xs text-purple-100 mt-1">Completed</p>
+                  </div>
+                  <Award className="w-10 h-10 text-white opacity-80" />
+                </div>
+              </Card>
+
+              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-amber-500 to-orange-500 text-white hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => router.push('/classmates')}>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-12 -mt-12"></div>
+                <div className="relative flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-amber-100 mb-2">Classmates</p>
+                    <p className="text-3xl md:text-4xl font-bold">6</p>
+                    <p className="text-xs text-amber-100 mt-1">Active</p>
+                  </div>
+                  <Users className="w-10 h-10 text-white opacity-80" />
+                </div>
+              </Card>
+            </div>
+
+            {/* Quick Links */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 md:mb-8">
+              <Button
+                onClick={() => router.push('/my-courses')}
+                onMouseEnter={() => router.prefetch('/my-courses')}
+                className="h-auto p-4 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border-2 border-blue-200 hover:border-blue-300"
+              >
+                <BookOpen className="w-6 h-6 text-blue-600" />
+                <span className="font-semibold text-gray-900">My Programs</span>
+              </Button>
+              <Button
+                onClick={() => router.push('/my-assessments')}
+                onMouseEnter={() => router.prefetch('/my-assessments')}
+                className="h-auto p-4 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 border-2 border-emerald-200 hover:border-emerald-300"
+              >
+                <FileQuestion className="w-6 h-6 text-emerald-600" />
+                <span className="font-semibold text-gray-900">Assessments</span>
+              </Button>
+              <Button
+                onClick={() => router.push('/my-results')}
+                onMouseEnter={() => router.prefetch('/my-results')}
+                className="h-auto p-4 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border-2 border-purple-200 hover:border-purple-300"
+              >
+                <Award className="w-6 h-6 text-purple-600" />
+                <span className="font-semibold text-gray-900">My Results</span>
+              </Button>
+              <Button
+                onClick={() => router.push('/classmates')}
+                onMouseEnter={() => router.prefetch('/classmates')}
+                className="h-auto p-4 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-50 to-amber-100 hover:from-amber-100 hover:to-amber-200 border-2 border-amber-200 hover:border-amber-300"
+              >
+                <Users className="w-6 h-6 text-amber-600" />
+                <span className="font-semibold text-gray-900">Classmates</span>
+              </Button>
+            </div>
+
+            {/* My Programs Summary */}
+            <Card className="mb-6 md:mb-8 animate-slide-up">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="font-orbitron text-xl font-bold text-gray-900 mb-1">My Programs</h2>
+                  <p className="text-sm text-gray-600">Your enrolled entrepreneurship programs</p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={() => router.push('/my-courses')}>
+                  View All
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { name: 'Agency Growth Mastery', code: 'AGM101', progress: 65, score: 87 },
+                  { name: 'eCommerce Launchpad', code: 'ECM201', progress: 40, score: 82 },
+                  { name: 'Copywriting & Personal Branding', code: 'CPB301', progress: 25, score: 91 },
+                ].map((course, idx) => (
+                  <div key={idx} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => router.push('/my-courses')}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium text-blue-600">{course.code}</span>
+                      <span className="text-xs font-semibold text-gray-900">{course.progress}%</span>
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2 text-sm line-clamp-1">{course.name}</h3>
+                    <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                      <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${course.progress}%` }} />
+                    </div>
+                    <p className="text-xs text-gray-600">Avg Score: <span className="font-semibold text-green-600">{course.score}%</span></p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Available Assessments */}
+            <Card className="mb-6 md:mb-8 animate-slide-up">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="font-orbitron text-xl font-bold text-gray-900 mb-1">Available Assessments</h2>
+                  <p className="text-sm text-gray-600">Take these quizzes to test your knowledge</p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={() => router.push('/my-assessments')}>
+                  View All
+                </Button>
+              </div>
               {loading ? (
                 <div className="text-center py-12">
                   <p className="text-gray-500">Loading assessments...</p>
@@ -620,13 +736,11 @@ export default function DashboardPage() {
                 <div className="text-center py-12">
                   <FileQuestion className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="font-semibold text-gray-900 mb-2">No assessments available</h3>
-                  <p className="text-sm text-gray-500">
-                    Check back later for new assessments from your instructors.
-                  </p>
+                  <p className="text-sm text-gray-500">Check back later for new assessments from your instructors.</p>
                 </div>
               ) : (
-                <div className="space-y-4">
-                  {quizzes.map((quiz) => (
+                <div className="space-y-3">
+                  {quizzes.slice(0, 3).map((quiz) => (
                     <div
                       key={quiz.id}
                       className="flex flex-col md:flex-row md:items-center md:justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors gap-4"
@@ -636,15 +750,8 @@ export default function DashboardPage() {
                           <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 whitespace-nowrap">
                             Available
                           </span>
-                          <h3 className="font-semibold text-gray-900 text-base md:text-lg break-words">
-                            {quiz.title}
-                          </h3>
+                          <h3 className="font-semibold text-gray-900 text-base break-words">{quiz.title}</h3>
                         </div>
-                        {quiz.description && (
-                          <p className="text-sm text-gray-600 mb-3 leading-relaxed">
-                            {quiz.description}
-                          </p>
-                        )}
                         <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm text-gray-600">
                           <span className="whitespace-nowrap">{quiz.questions?.length || 0} Questions</span>
                           {quiz.timeLimit && (
@@ -652,29 +759,99 @@ export default function DashboardPage() {
                               <span className="hidden md:inline">•</span>
                               <span className="flex items-center gap-1 whitespace-nowrap">
                                 <Clock className="w-4 h-4 flex-shrink-0" />
-                                {quiz.timeLimit} minutes
+                                {quiz.timeLimit} min
                               </span>
-                            </>
-                          )}
-                          {quiz.maxAttempts > 1 && (
-                            <>
-                              <span className="hidden md:inline">•</span>
-                              <span className="whitespace-nowrap">{quiz.maxAttempts} attempts allowed</span>
                             </>
                           )}
                         </div>
                       </div>
                       <Button
+                        size="sm"
                         onMouseEnter={() => router.prefetch(`/quizzes/${quiz.id}/take`)}
                         onClick={() => router.push(`/quizzes/${quiz.id}/take`)}
-                        className="w-full md:w-auto md:ml-4 md:flex-shrink-0"
+                        className="w-full md:w-auto"
                       >
-                        Start Assessment
+                        Start
                       </Button>
                     </div>
                   ))}
                 </div>
               )}
+            </Card>
+
+            {/* Recent Results */}
+            <Card className="mb-6 md:mb-8 animate-slide-up">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="font-orbitron text-xl font-bold text-gray-900 mb-1">My Recent Results</h2>
+                  <p className="text-sm text-gray-600">Your latest assessment scores</p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={() => router.push('/my-results')}>
+                  View All
+                </Button>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { title: 'Agency Growth Fundamentals Assessment', course: 'AGM101', score: 90, date: '2024-03-15' },
+                  { title: 'Client Acquisition & Retention Strategies', course: 'AGM101', score: 93, date: '2024-03-14' },
+                  { title: 'eCommerce Product Research & Validation', course: 'ECM201', score: 80, date: '2024-03-13' },
+                ].map((result, idx) => (
+                  <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className={`px-2 py-1 rounded text-xs font-semibold ${result.score >= 90 ? 'bg-green-100 text-green-700' : result.score >= 80 ? 'bg-blue-100 text-blue-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                          {result.score}%
+                        </span>
+                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{result.course}</span>
+                      </div>
+                      <h3 className="font-semibold text-gray-900 text-sm line-clamp-1">{result.title}</h3>
+                      <p className="text-xs text-gray-500 mt-1">{new Date(result.date).toLocaleDateString()}</p>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => router.push('/my-results')}
+                    >
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Top Classmates */}
+            <Card className="mb-6 md:mb-8 animate-slide-up">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="font-orbitron text-xl font-bold text-gray-900 mb-1">Top Classmates</h2>
+                  <p className="text-sm text-gray-600">Leaderboard of fellow entrepreneurs</p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={() => router.push('/classmates')}>
+                  View All
+                </Button>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { name: 'Sarah Williams', rank: 1, score: 94, badge: '🥇' },
+                  { name: 'Michael Brown', rank: 2, score: 89, badge: '🥈' },
+                  { name: 'Emily Davis', rank: 3, score: 87, badge: '🥉' },
+                ].map((classmate, idx) => (
+                  <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        {classmate.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-lg">{classmate.badge}</span>
+                          <h3 className="font-semibold text-gray-900 text-sm">{classmate.name}</h3>
+                        </div>
+                        <p className="text-xs text-gray-600">Avg Score: <span className="font-semibold text-green-600">{classmate.score}%</span></p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </Card>
           </>
         )}
